@@ -1,6 +1,18 @@
-FROM erlang:22.3.2-alpine as builder
+FROM erlang:22
 
-RUN apk add --no-cache --update \
-    git tar build-base linux-headers autoconf automake libtool pkgconfig \
-    dbus-dev bzip2 bison flex gmp-dev cmake lz4 libsodium-dev openssl-dev \
-    sed wget
+RUN apt update
+RUN apt-get install -y -q \
+        build-essential \
+        bison \
+        flex \
+        git \
+        gzip \
+        autotools-dev \
+        automake \
+        libtool \
+        pkg-config \
+        cmake \
+        libsodium-dev
+
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
