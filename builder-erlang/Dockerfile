@@ -14,5 +14,6 @@ RUN apt-get install -y -q \
         cmake \
         libsodium-dev
 
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain stable
+RUN rustup update
