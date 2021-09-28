@@ -1,4 +1,4 @@
-FROM erlang:23.2.5-alpine as builder
+FROM erlang:23.3.4.5-alpine as builder
 
 RUN apk add --no-cache --update \
     git tar build-base linux-headers autoconf automake libtool pkgconfig \
